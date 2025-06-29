@@ -1,57 +1,59 @@
 import sys
+
 sys.setrecursionlimit(10**6)
 
+
 class Node:
-    def __init__(self, data):
-        self.x = data[0][0]
-        self.data = data[1]
+    def __init__(self, tmp):
+        self.x = tmp[0][0]
+        self.data = tmp[1]
         self.left = None
         self.right = None
 
-def insert(node,data):
+def insert_node(node, info):
     if node is None:
-        return Node(data)
-    if data[0][0] < node.x:
-        node.left = insert(node.left, data)
+        return Node(info)
+
+    if info[0][0] < node.x:
+        node.left = insert_node(node.left, info)
     else:
-        node.right = insert(node.right, data)
+        node.right = insert_node(node.right, info)
     return node
-    
         
-def make_tree(info):
-    info.sort(key=lambda x:x[0][1], reverse=True)
+        
+def make_tree(nodeinfo):
+    
+    nodes = []
+    for i, node in enumerate(nodeinfo):
+        nodes.append((node, i+1))
+        
+    nodes.sort(key=lambda x: x[0][0])
+    nodes.sort(key=lambda x:x[0][1], reverse=True)
     
     root = None
-    for inf in info:
-        root = insert(root,inf)
+    for node in nodes:
+        root = insert_node(root, node)
     return root
 
+def preorder(root, answer):
+    if root:
+        answer.append(root.data)
+        preorder(root.left, answer)
+        preorder(root.right, answer)
+    
+    return answer
 
+    
+def huwiorder(root, answer):
+    if root:
+        huwiorder(root.left, answer)
+        huwiorder(root.right, answer)
+        answer.append(root.data)
+    
+    return answer
 
 def solution(nodeinfo):
-    answer = [[]]
-    node = []
-    for i,n in enumerate(nodeinfo):
-        node.append((n,i+1))
-    root = make_tree(node)
-    
-    pre = []
-    post = []
-    
-    def preorder(t):
-        if t:
-            pre.append(t.data)
-            preorder(t.left)
-            preorder(t.right)
-    
-    def postorder(t):
-        if t:
-            postorder(t.left)
-            postorder(t.right)
-            post.append(t.data)
-    
-    preorder(root)
-    postorder(root)
-    
-    
-    return [pre,post]
+    root = make_tree(nodeinfo)
+    answer1 = preorder(root, [])
+    answer2 = huwiorder(root, [])
+    return [answer1, answer2]

@@ -1,23 +1,24 @@
-from collections import deque
+import sys
 
-computers = int(input())
+input = sys.stdin.readline
+
 n = int(input())
+m = int(input())
 
-adj = [[] for _ in range(computers+1)]
-for _ in range(n):
-    i,j = map(int, input().split())
-    adj[i].append(j)
-    adj[j].append(i)
+adj = [[] for _ in range(n)]
 
-warm = [0]*(computers+1)
-warm[1] = 1
+for _ in range(m):
+    a,b = map(int, input().split())
+    adj[a-1].append(b-1)
+    adj[b-1].append(a-1)
 
-que = deque([1])
-while que:
-    tmp = que.popleft()
-    for next in adj[tmp]:
-        if not warm[next]:
-            warm[next] = 1
-            que.append(next)
+visit = [0]*n
 
-print(sum(warm)-1)
+def dfs(t):
+    visit[t] = 1
+
+    for i in range(len(adj[t])):
+        if not visit[adj[t][i]]:
+            dfs(adj[t][i])
+dfs(0)
+print(sum(visit)-1)

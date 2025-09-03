@@ -2,14 +2,12 @@
 
 n = int(input())
 
-cnt = 0
-found = False
-for i in range(n//2 + 1):
-    if (n - 2*i) % 5 == 0:
+
+flag = False
+for i in range(n//2+1):
+    if (n - 2*i)%5 == 0:
         print(i + (n-2*i)//5)
-        found = True
+        flag = True
         break
-
-if not found:
+if not flag:
     print(-1)
-

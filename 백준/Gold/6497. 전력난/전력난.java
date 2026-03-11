@@ -4,11 +4,15 @@ import java.util.*;
 public class Main {
 
     static int n, m;
-    static ArrayList<Node>[] arr;
+    static ArrayList<Node> arr;
+    static int[] parent;
+    static int[] rank;
     static class Node implements Comparable<Node> {
+        int start;
         int next;
         int dist;
-        Node(int n, int d){
+        Node(int s, int n, int d){
+            this.start = s;
             this.next = n;
             this.dist = d;
         }
@@ -30,10 +34,12 @@ public class Main {
             m = Integer.parseInt(st.nextToken());
             n = Integer.parseInt(st.nextToken());
 
-            if(m==0 && n==0) break;
-            arr = new ArrayList[m];
-            for (int i = 0; i < m; i++) arr[i] = new ArrayList<>();
+            parent = new int[m];
+            for(int i=0; i<m; i++) {parent[i] = i;}
+            rank = new int[m];
 
+            if(m==0 && n==0) break;
+            arr = new ArrayList<>();
             int total =0;
 
             for (int i = 0; i < n; i++) {
@@ -41,39 +47,51 @@ public class Main {
                 int x = Integer.parseInt(st.nextToken());
                 int y = Integer.parseInt(st.nextToken());
                 int z = Integer.parseInt(st.nextToken());
-                arr[x].add(new Node(y, z));
-                arr[y].add(new Node(x, z));
+                arr.add(new Node(x, y, z));
                 total+=z;
             }
-
-            int tmp = prim(0);
-            System.out.println(total - tmp);
-        }
-    }
-
-    public static int prim(int start){
-        boolean[] visit =  new boolean[m];
-        PriorityQueue<Node> pq = new PriorityQueue<>();
-        pq.offer(new Node(start,0));
-
-
-        int sum=0;
-
-        while(!pq.isEmpty()){
-            Node next = pq.poll();
-
-            if(visit[next.next]) continue;
-            visit[next.next] = true;
-            sum+= next.dist;
-
-            for(Node n: arr[next.next]){
-                pq.offer(n);
+            int sum=0;
+            int cnt=0;
+            Collections.sort(arr);
+            for(int i=0;i<arr.size();i++){
+                Node node = arr.get(i);
+                if(find(node.start) != find(node.next)){
+                    union(node.start,node.next);
+                    sum += node.dist;
+                    cnt++;
+                    if(cnt == m) break;
+                }
             }
 
+            System.out.println(total- sum);
+        }
+    }
+
+    static void union(int x, int y){
+        int x_parent = find(x);
+        int y_parent = find(y);
+
+        if (x_parent == y_parent) return;
+
+        if(rank[x_parent] < rank[y_parent]){
+            parent[x_parent] = y_parent;
+        }
+        else if (rank[x_parent] > rank[y_parent]){
+            parent[y_parent] = x_parent;
+        }
+        else{
+            parent[x_parent] = y_parent;
+            rank[y_parent]++;
         }
 
-        return sum;
+
     }
+
+    public static int find(int x){
+        if(parent[x] == x) return x;
+        return parent[x] = find(parent[x]);
+    }
+
 
 
 }

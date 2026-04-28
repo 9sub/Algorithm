@@ -1,0 +1,7 @@
+#include<stdio.h>
+main()
+{
+	char a[50];
+	scanf("%s", a);
+	printf("%s??!\n", a);
+} 

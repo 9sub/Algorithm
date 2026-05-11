@@ -25,7 +25,7 @@ class Solution {
         
         long target = (sum1+sum2)/2;
 
-        while(cnt <= queue1.length * 4){
+        while(cnt <= queue1.length * 3){
             if(sum1 == target) return cnt;
 
             if(sum1>target){

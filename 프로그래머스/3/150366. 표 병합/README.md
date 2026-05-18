@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 62.5 MB, 시간: 7.96 ms
+메모리: 63.8 MB, 시간: 9.38 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2026년 05월 18일 00:37:00
+2026년 05월 18일 09:50:50
 
 ### 문제 설명
 
@@ -66,124 +66,124 @@
 <p>아래는 <code>UPDATE</code> 명령어를 실행하여 빈 셀에 값을 입력하는 예시입니다. </p>
 <table class="table">
         <thead><tr>
-<th>commands</th>
-<th>효과</th>
+<th data-imt-p="1">commands</th>
+<th data-imt-p="1">효과</th>
 </tr>
 </thead>
         <tbody><tr>
-<td>UPDATE 1 1 menu</td>
+<td data-imt-p="1">UPDATE 1 1 menu</td>
 <td>(1,1)에 <code>"menu"</code> 입력</td>
 </tr>
 <tr>
-<td>UPDATE 1 2 category</td>
+<td data-imt-p="1">UPDATE 1 2 category</td>
 <td>(1,2)에 <code>"category"</code> 입력</td>
 </tr>
 <tr>
-<td>UPDATE 2 1 bibimbap</td>
+<td data-imt-p="1">UPDATE 2 1 bibimbap</td>
 <td>(2,1)에 <code>"bibimbap"</code> 입력</td>
 </tr>
 <tr>
-<td>UPDATE 2 2 korean</td>
+<td data-imt-p="1">UPDATE 2 2 korean</td>
 <td>(2,2)에 <code>"korean"</code> 입력</td>
 </tr>
 <tr>
-<td>UPDATE 2 3 rice</td>
+<td data-imt-p="1">UPDATE 2 3 rice</td>
 <td>(2,3)에 <code>"rice"</code> 입력</td>
 </tr>
 <tr>
-<td>UPDATE 3 1 ramyeon</td>
+<td data-imt-p="1">UPDATE 3 1 ramyeon</td>
 <td>(3,1)에 <code>"ramyeon"</code> 입력</td>
 </tr>
 <tr>
-<td>UPDATE 3 2 korean</td>
+<td data-imt-p="1">UPDATE 3 2 korean</td>
 <td>(3,2)에 <code>"korean"</code> 입력</td>
 </tr>
 <tr>
-<td>UPDATE 3 3 noodle</td>
+<td data-imt-p="1">UPDATE 3 3 noodle</td>
 <td>(3,3)에 <code>"noodle"</code> 입력</td>
 </tr>
 <tr>
-<td>UPDATE 3 4 instant</td>
+<td data-imt-p="1">UPDATE 3 4 instant</td>
 <td>(3,4)에 <code>"instant"</code> 입력</td>
 </tr>
 <tr>
-<td>UPDATE 4 1 pasta</td>
+<td data-imt-p="1">UPDATE 4 1 pasta</td>
 <td>(4,1)에 <code>"pasta"</code> 입력</td>
 </tr>
 <tr>
-<td>UPDATE 4 2 italian</td>
+<td data-imt-p="1">UPDATE 4 2 italian</td>
 <td>(4,2)에 <code>"italian"</code> 입력</td>
 </tr>
 <tr>
-<td>UPDATE 4 3 noodle</td>
+<td data-imt-p="1">UPDATE 4 3 noodle</td>
 <td>(4,3)에 <code>"noodle"</code> 입력</td>
 </tr>
 </tbody>
       </table>
 <p>위 명령어를 실행하면 아래 그림과 같은 상태가 됩니다.</p>
 
-<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/d05f1a33-d67a-401a-a8f2-cc73e80a7f26/1-1.png" title="" alt="1-1.png"></p>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/d05f1a33-d67a-401a-a8f2-cc73e80a7f26/1-1.png" title="" alt="1-1.png" width="755.15625" height="376.109375"></p>
 
 <p>아래는 <code>MERGE</code> 명령어를 실행하여 셀을 병합하는 예시입니다. </p>
 <table class="table">
         <thead><tr>
-<th>commands</th>
-<th>효과</th>
+<th data-imt-p="1">commands</th>
+<th data-imt-p="1">효과</th>
 </tr>
 </thead>
         <tbody><tr>
-<td>MERGE 1 2 1 3</td>
-<td>(1,2)와 (1,3) 병합</td>
+<td data-imt-p="1">MERGE 1 2 1 3</td>
+<td data-imt-p="1">(1,2)와 (1,3) 병합</td>
 </tr>
 <tr>
-<td>MERGE 1 3 1 4</td>
-<td>(1,3)과 (1,4) 병합</td>
+<td data-imt-p="1">MERGE 1 3 1 4</td>
+<td data-imt-p="1">(1,3)과 (1,4) 병합</td>
 </tr>
 </tbody>
       </table>
 <p>위 명령어를 실행하면 아래와 같은 상태가 됩니다.</p>
 
-<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/4a7cab89-0512-40b2-bf95-9bcfeff99830/1-2.png" title="" alt="1-2.png"></p>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/4a7cab89-0512-40b2-bf95-9bcfeff99830/1-2.png" title="" alt="1-2.png" width="755.15625" height="376.109375"></p>
 
 <p>병합한 셀은 <code>"category"</code> 값을 가지게 되며 (1,2), (1,3), (1,4) 중 어느 위치를 선택하더라도 접근할 수 있습니다.  </p>
 
 <p>아래는 <code>UPDATE</code> 명령어를 실행하여 셀의 값을 변경하는 예시입니다. </p>
 <table class="table">
         <thead><tr>
-<th>commands</th>
-<th>효과</th>
+<th data-imt-p="1">commands</th>
+<th data-imt-p="1">효과</th>
 </tr>
 </thead>
         <tbody><tr>
-<td>UPDATE korean hansik</td>
+<td data-imt-p="1">UPDATE korean hansik</td>
 <td><code>"korean"</code>을 <code>"hansik"</code>으로 변경</td>
 </tr>
 <tr>
-<td>UPDATE 1 3 group</td>
+<td data-imt-p="1">UPDATE 1 3 group</td>
 <td>(1,3) 위치의 셀 값을 <code>"group"</code>으로 변경</td>
 </tr>
 </tbody>
       </table>
 <p>위 명령어를 실행하면 아래와 같은 상태가 됩니다.</p>
 
-<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/211b0331-1768-41a3-87d6-6d56356c5b7e/1-3.png" title="" alt="1-3.png"></p>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/211b0331-1768-41a3-87d6-6d56356c5b7e/1-3.png" title="" alt="1-3.png" width="755.15625" height="376.109375"></p>
 
 <p>아래는 <code>UNMERGE</code> 명령어를 실행하여 셀의 병합을 해제하는 예시입니다.</p>
 <table class="table">
         <thead><tr>
-<th>commands</th>
-<th>효과</th>
+<th data-imt-p="1">commands</th>
+<th data-imt-p="1">효과</th>
 </tr>
 </thead>
         <tbody><tr>
-<td>UNMERGE 1 4</td>
+<td data-imt-p="1">UNMERGE 1 4</td>
 <td>셀 병합 해제 후 원래 값은 (1,4)가 가짐</td>
 </tr>
 </tbody>
       </table>
 <p>위 명령어를 실행하면 아래와 같은 상태가 됩니다.</p>
 
-<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/2e9b0ad6-0c8c-45f6-8a8a-8a8a3d5625c3/1-4.png" title="" alt="1-4.png"></p>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/2e9b0ad6-0c8c-45f6-8a8a-8a8a3d5625c3/1-4.png" title="" alt="1-4.png" width="755.15625" height="376.109375"></p>
 
 <p>실행할 명령어들이 담긴 1차원 문자열 배열 <code>commands</code>가 매개변수로 주어집니다. <code>commands</code>의 명령어들을 순서대로 실행하였을 때, <code>"PRINT r c"</code> 명령어에 대한 실행결과를 순서대로 1차원 문자열 배열에 담아 return 하도록 solution 함수를 완성해주세요.</p>
 
@@ -231,8 +231,8 @@
 <h5>입출력 예</h5>
 <table class="table">
         <thead><tr>
-<th>commands</th>
-<th>result</th>
+<th data-imt-p="1">commands</th>
+<th data-imt-p="1">result</th>
 </tr>
 </thead>
         <tbody><tr>
@@ -261,31 +261,31 @@
 <li>모든 <code>UPDATE</code> 명령어를 실행하면 아래와 같은 상태가 됩니다.</li>
 </ul>
 
-<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/8225f0c5-3d16-4b18-9b7e-412069c95c87/2-1.png" title="" alt="2-1.png"></p>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/8225f0c5-3d16-4b18-9b7e-412069c95c87/2-1.png" title="" alt="2-1.png" width="655" height="360"></p>
 
 <ul>
 <li><code>"MERGE 1 1 1 2"</code> 명령어를 실행하면 아래와 같은 상태가 됩니다.</li>
 </ul>
 
-<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/553d60bd-2f3d-4c51-8da6-d97534275ed8/2-2.png" title="" alt="2-2.png"></p>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/553d60bd-2f3d-4c51-8da6-d97534275ed8/2-2.png" title="" alt="2-2.png" width="655" height="360"></p>
 
 <ul>
 <li><code>"MERGE 2 2 2 1"</code> 명령어를 실행하면 아래와 같은 상태가 됩니다.</li>
 </ul>
 
-<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/b52ef688-b183-4e3f-9024-62fc3c1ee6fd/2-3.png" title="" alt="2-3.png"></p>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/b52ef688-b183-4e3f-9024-62fc3c1ee6fd/2-3.png" title="" alt="2-3.png" width="655" height="360"></p>
 
 <ul>
 <li><code>"MERGE 2 1 1 1"</code> 명령어를 실행하면 아래와 같은 상태가 됩니다.</li>
 </ul>
 
-<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/2ae0c82d-d090-4183-a8dc-8357fe520bf7/2-4.png" title="" alt="2-4.png"></p>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/2ae0c82d-d090-4183-a8dc-8357fe520bf7/2-4.png" title="" alt="2-4.png" width="655" height="360"></p>
 
 <ul>
 <li><code>"UNMERGE 2 2"</code> 명령어를 실행하면 아래와 같은 상태가 됩니다.</li>
 </ul>
 
-<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/bb1128a2-38fd-4e27-b675-27838d0186da/2-5.png" title="" alt="2-5.png"></p>
+<p><img src="https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/bb1128a2-38fd-4e27-b675-27838d0186da/2-5.png" title="" alt="2-5.png" width="655" height="360"></p>
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges

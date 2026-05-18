@@ -16,115 +16,96 @@ class Solution {
         }
 
         for (String command : commands) {
-            String[] cmd = command.split(" ");
+            String[] tmp = command.split(" ");
 
-            if (cmd[0].equals("UPDATE")) {
-                if (cmd.length == 4) {
-                    int r = Integer.parseInt(cmd[1]);
-                    int c = Integer.parseInt(cmd[2]);
-                    String val = cmd[3];
+            if (tmp[0].equals("UPDATE")) {
+                if (tmp.length == 4) {
+                    int r = Integer.parseInt(tmp[1]);
+                    int c = Integer.parseInt(tmp[2]);
+                    String val = tmp[3];
 
-                    int idx = getIndex(r, c);
-                    int root = find(idx);
-
-                    value[root] = val;
+                    value[find((r-1)*50+c)] = val;
                 } else {
-                    String val1 = cmd[1];
-                    String val2 = cmd[2];
+                    String val1 = tmp[1];
+                    String val2 = tmp[2];
 
                     for (int i = 1; i <= 2500; i++) {
-                        if (value[i] != null && value[i].equals(val1)) {
-                            value[i] = val2;
+                        if (value[find(i)] != null && value[find(i)].equals(val1)) {
+                            value[find(i)] = val2;
                         }
                     }
                 }
-            } else if (cmd[0].equals("MERGE")) {
-                int r1 = Integer.parseInt(cmd[1]);
-                int c1 = Integer.parseInt(cmd[2]);
-                int r2 = Integer.parseInt(cmd[3]);
-                int c2 = Integer.parseInt(cmd[4]);
+            } else if (tmp[0].equals("MERGE")) {
+                int r1 = Integer.parseInt(tmp[1]);
+                int c1 = Integer.parseInt(tmp[2]);
+                int r2 = Integer.parseInt(tmp[3]);
+                int c2 = Integer.parseInt(tmp[4]);
 
-                merge(r1, c1, r2, c2);
-
-            } else if (cmd[0].equals("UNMERGE")) {
-                int r = Integer.parseInt(cmd[1]);
-                int c = Integer.parseInt(cmd[2]);
-
-                unmerge(r, c);
-
-            } else if (cmd[0].equals("PRINT")) {
-                int r = Integer.parseInt(cmd[1]);
-                int c = Integer.parseInt(cmd[2]);
-
-                int idx = getIndex(r, c);
-                int root = find(idx);
-
-                if (value[root] == null) {
-                    answer.add("EMPTY");
-                } else {
-                    answer.add(value[root]);
+                int num1 = (r1-1)*50 +c1;
+                int num2 = (r2-1)*50 + c2;
+                
+                if(value[find(num1)] == null && value[find(num2)] != null){
+                    int t = num1;
+                    num1 = num2;
+                    num2 = t;
                 }
+                union(num1, num2);
+                
+
+            } else if (tmp[0].equals("UNMERGE")) {
+                int r = Integer.parseInt(tmp[1]);
+                int c = Integer.parseInt(tmp[2]);
+
+                int group = find((r-1)*50 +c);
+                String val = value[group];
+                
+                for(int i=1;i<=2500;i++)find(i) ;
+                
+                for(int i=1;i<=2500;i++){
+                    if(find(i) == group){
+                        parent[i] = i;
+                        
+                        if(i == (r-1)*50+c){
+                            value[i] = val;
+                        }else value[i] = null;
+                    }
+                }
+                
+
+            } else if (tmp[0].equals("PRINT")) {
+                int r = Integer.parseInt(tmp[1]);
+                int c = Integer.parseInt(tmp[2]);
+
+                String v = value[find((r-1)*50+c)];
+                
+                if(v == null){
+                    answer.add("EMPTY");
+                }else answer.add(v);
             }
         }
-
-        return answer.toArray(new String[0]);
-    }
-
-    static int getIndex(int r, int c) {
-        return (r - 1) * 50 + c;
-    }
-
-    static int find(int x) {
-        if (parent[x] == x) {
-            return x;
+        
+        String[] fin = new String[answer.size()];
+        
+        for(int i=0;i<answer.size();i++){
+            fin[i] = answer.get(i);
         }
 
+        return fin;
+    }
+
+    static int find(int x){
+        if(x == parent[x]) return x;
         return parent[x] = find(parent[x]);
     }
-
-    static void merge(int r1, int c1, int r2, int c2) {
-        int idx1 = getIndex(r1, c1);
-        int idx2 = getIndex(r2, c2);
-
-        int root1 = find(idx1);
-        int root2 = find(idx2);
-
-        if (root1 == root2) {
-            return;
-        }
-
-        String val1 = value[root1];
-        String val2 = value[root2];
-
-        parent[root2] = root1;
-
-        if (val1 != null) {
-            value[root1] = val1;
-        } else {
-            value[root1] = val2;
-        }
-
-        value[root2] = null;
+    
+    static void union(int x,int y){
+        x = find(x);
+        y = find(y);
+        
+        if(x==y) return;
+        
+        value[y] = null;
+        parent[y] = x;
     }
-
-    static void unmerge(int r, int c) {
-        int idx = getIndex(r, c);
-        int root = find(idx);
-        String keepValue = value[root];
-
-        ArrayList<Integer> group = new ArrayList<>();
-
-        for (int i = 1; i <= 2500; i++) {
-            if (find(i) == root) {
-                group.add(i);
-            }
-        }
-
-        for (int cell : group) {
-            parent[cell] = cell;
-            value[cell] = null;
-        }
-
-        value[idx] = keepValue;
-    }
+    
 }
